@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 
 faker = Faker()
 
+
 def fill_data(session: Session):
     # Створення груп
     groups = [Group(name=f"Group {i}") for i in range(1, 4)]

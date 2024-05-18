@@ -4,12 +4,6 @@ from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
-# Таблиця груп
-class Group(Base):
-    __tablename__ = "groups"
-    id = Column(Integer, primary_key=True)
-    name = Column(String(25), nullable=False)
-    students = relationship("Student", back_populates="group")
 
 # Таблиця студентів
 class Student(Base):
@@ -19,6 +13,13 @@ class Student(Base):
     group_id = Column(Integer, ForeignKey("groups.id"), nullable=False)
     group = relationship("Group", back_populates="students")
     grades = relationship("Grade", back_populates="student")
+
+# Таблиця груп
+class Group(Base):
+    __tablename__ = "groups"
+    id = Column(Integer, primary_key=True)
+    name = Column(String(25), nullable=False)
+    students = relationship("Student", back_populates="group")
 
 # Таблиця викладачів
 class Teacher(Base):
